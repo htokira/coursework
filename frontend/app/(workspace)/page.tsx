@@ -1,4 +1,4 @@
-import UploadArea from "@/components/UploadArea";
+import UploadArea from "@/components/UploadArea/UploadArea";
 
 export default function Home() {
     return (
