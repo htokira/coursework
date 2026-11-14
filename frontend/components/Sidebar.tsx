@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from 'next/image';
 import homeIcon from '../public/home.png'
@@ -28,6 +31,9 @@ const navigationItems = [
 ];
 
 export default function Sidebar() {
+    const pathname = usePathname();
+
+
     return (
         <aside className="sidebar">
             <div className="sidebar-section">
