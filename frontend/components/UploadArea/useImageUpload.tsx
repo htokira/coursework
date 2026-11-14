@@ -1,4 +1,9 @@
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import {
+    savePendingImage,
+    type PendingImage,
+} from "@/services/analysisService";
 
 export interface ImageInfo {
     file: File;
@@ -15,6 +20,7 @@ export function useImageUpload() {
     const [image, setImage] = useState<ImageInfo | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [error, setError] = useState("");
+    const router = useRouter();
 
     useEffect(() => {
         return () => {
@@ -63,6 +69,71 @@ export function useImageUpload() {
         setError("");
     };
 
+    const prepareImage = async (file: File): Promise<string> => {
+    const source = URL.createObjectURL(file);
+
+        try {
+            const img = new window.Image();
+
+            await new Promise<void>((resolve, reject) => {
+                img.onload = () => resolve();
+                img.onerror = () => reject(
+                    new Error("Не вдалося прочитати зображення")
+                );
+
+                img.src = source;
+            });
+
+            const maxDimension = 1400;
+
+            const scale = Math.min(
+                1,
+                maxDimension / Math.max(img.naturalWidth, img.naturalHeight)
+            );
+
+            const canvas = document.createElement("canvas");
+
+            canvas.width = Math.round(img.naturalWidth * scale);
+            canvas.height = Math.round(img.naturalHeight * scale);
+
+            const context = canvas.getContext("2d");
+
+            if (!context) {
+                throw new Error("Не вдалося обробити зображення");
+            }
+
+            context.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            return canvas.toDataURL("image/jpeg", 0.75);
+        } finally {
+            URL.revokeObjectURL(source);
+        }
+    };
+
+    const startAnalysis = async () => {
+        if (!image) return;
+
+        try {
+            const imageUrl = await prepareImage(image.file);
+
+            const pendingImage: PendingImage = {
+                fileName: image.file.name,
+                imageUrl,
+                fileSize: image.file.size,
+                width: image.width,
+                height: image.height,
+            };
+
+            savePendingImage(pendingImage);
+
+            router.push("/analysis");
+        } catch {
+            setError(
+                "Не вдалося підготувати зображення. Спробуйте інший файл."
+            );
+        }
+    };
+
     return {
         image,
         error,
@@ -72,5 +143,6 @@ export function useImageUpload() {
         processFile,
         removeImage,
         setError,
+        startAnalysis,
     };
 }

@@ -16,6 +16,7 @@ export default function UploadArea() {
         processFile,
         removeImage,
         setError,
+        startAnalysis,
     } = useImageUpload();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +52,7 @@ export default function UploadArea() {
                     inputRef={inputRef}
                     onRemove={removeImage}
                     onChange={handleInputChange}
+                    onStartAnalysis={startAnalysis}
                 />
             )}
 

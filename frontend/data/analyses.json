@@ -1,0 +1,107 @@
+[
+  {
+    "id": "demo-001",
+    "userEmail": "user@example.com",
+    "fileName": "city_landscape.jpg",
+    "imageUrl": "/demo-images/city.jpg",
+    "fileSize": 2457600,
+    "width": 1920,
+    "height": 1080,
+    "createdAt": "2026-11-08T14:32:00.000Z",
+    "status": "completed",
+    "result": {
+      "verdict": "suspicious",
+      "suspiciousScore": 78,
+      "conclusion": "Виявлено ознаки можливого копіювання та переміщення фрагментів зображення. Одна з областей демонструє підвищену схожість із іншою ділянкою фотографії.",
+      "modifications": [
+        {
+          "id": "m-001",
+          "type": "copy_move",
+          "label": "Копіювання та переміщення",
+          "confidence": 94,
+          "description": "Виявлено область із ознаками дублювання фрагмента зображення.",
+          "region": {
+            "x": 57,
+            "y": 28,
+            "width": 20,
+            "height": 25
+          }
+        },
+        {
+          "id": "m-002",
+          "type": "retouching",
+          "label": "Ретушування",
+          "confidence": 72,
+          "description": "Зафіксовано локальну зміну текстури.",
+          "region": {
+            "x": 20,
+            "y": 60,
+            "width": 15,
+            "height": 16
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "demo-002",
+    "userEmail": "user@example.com",
+    "fileName": "mountain_photo.png",
+    "imageUrl": "/demo-images/mountain.png",
+    "fileSize": 3812400,
+    "width": 2560,
+    "height": 1440,
+    "createdAt": "2026-11-06T10:15:00.000Z",
+    "status": "completed",
+    "result": {
+      "verdict": "modified",
+      "suspiciousScore": 96,
+      "conclusion": "Виявлено декілька областей із високою ймовірністю монтажу. Результат демонстраційного дослідження вказує на можливе поєднання фрагментів різного походження.",
+      "modifications": [
+        {
+          "id": "m-003",
+          "type": "splicing",
+          "label": "Монтаж зображення",
+          "confidence": 96,
+          "description": "Виявлено ділянку з ознаками поєднання різних джерел зображення.",
+          "region": {
+            "x": 40,
+            "y": 15,
+            "width": 32,
+            "height": 35
+          }
+        },
+        {
+          "id": "m-004",
+          "type": "inpainting",
+          "label": "Відновлення області",
+          "confidence": 83,
+          "description": "Виявлено ділянку з ознаками штучного заповнення.",
+          "region": {
+            "x": 68,
+            "y": 62,
+            "width": 18,
+            "height": 20
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "demo-003",
+    "userEmail": "user@example.com",
+    "fileName": "nature_original.jpg",
+    "imageUrl": "/demo-images/nature.jpg",
+    "fileSize": 1843200,
+    "width": 1600,
+    "height": 1200,
+    "createdAt": "2026-11-04T16:45:00.000Z",
+    "status": "completed",
+    "result": {
+      "verdict": "authentic",
+      "suspiciousScore": 8,
+      "conclusion": "У межах демонстраційного дослідження не виявлено виражених ознак модифікації. Це не гарантує автентичність оригінального зображення.",
+      "modifications": []
+    }
+  }
+]

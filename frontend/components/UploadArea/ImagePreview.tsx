@@ -9,6 +9,7 @@ interface ImagePreviewProps {
     inputRef: RefObject<HTMLInputElement | null>;
     onRemove: () => void;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onStartAnalysis: () => void;
 }
 
 export function ImagePreview({
@@ -16,6 +17,7 @@ export function ImagePreview({
     inputRef,
     onRemove,
     onChange,
+    onStartAnalysis,
 }: ImagePreviewProps) {
     const formatSize = (bytes: number) => {
         return bytes >= 1024 * 1024
@@ -84,16 +86,21 @@ export function ImagePreview({
                 <button
                     type="button"
                     className="secondary-button"
-                    onClick={() => inputRef.current?.click()}
-                >
+                    onClick={() => inputRef.current?.click()}>
                     Замінити зображення
                 </button>
 
                 <button
                     type="button"
+                    className="analysis-button"
+                    onClick={onStartAnalysis}>
+                    Розпочати аналіз
+                </button>
+
+                <button
+                    type="button"
                     className="remove-button"
-                    onClick={onRemove}
-                >
+                    onClick={onRemove}>
                     Видалити
                 </button>
             </div>
@@ -103,8 +110,7 @@ export function ImagePreview({
                 type="file"
                 accept="image/*"
                 hidden
-                onChange={onChange}
-            />
+                onChange={onChange}/>
 
             <p className="preview-notice">
                 Функція аналізу зображення буде доступна після підключення відповідного модуля.
