@@ -62,12 +62,6 @@ export default function HistoryPage() {
         );
     };
 
-    const totalCount = analyses.length;
-
-    const suspiciousCount = analyses.filter(
-        (item) => item.result.verdict !== "authentic"
-    ).length;
-
     if (!initialized) {
         return (
             <main className="main-content">

@@ -1,0 +1,266 @@
+.app-layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    grid-template-rows: 76px minmax(0, 1fr) auto;
+    grid-template-areas:
+        "header header"
+        "sidebar content"
+        "footer footer";
+}
+
+.header {
+    grid-area: header;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
+}
+
+.logo-title {
+    color: #172438;
+    font-size: var(--common-size);
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-avatar {
+    width: 39px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    background: #eff6ff;
+    border-radius: 50%;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.profile-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: var(--small-size);
+}
+
+.profile-role {
+    color: var(--text-muted);
+    font-size: var(--small-size);
+}
+
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 18px 22px;
+    background: var(--sidebar);
+    color: white;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.sidebar-label {
+    padding: 0 12px;
+    color: #8191a8;
+    font-size: var(--small-size);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sidebar-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-link {
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 12px;
+    color: #b6c2d2;
+    font-size: var(--small-size);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-link:hover {
+    background: var(--sidebar-hover);
+    color: white;
+}
+
+.sidebar-link.active {
+    color: white;
+    background: var(--sidebar-active);
+}
+
+.sidebar-link.active .sidebar-link-icon {
+    color: #60a5fa;
+}
+
+.sidebar-link-icon {
+    width: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sidebar-link-icon svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.content-wrapper {
+    grid-area: content;
+    min-width: 0;
+    min-height: 0;
+}
+
+
+.footer {
+    grid-area: footer;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 32px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: var(--small-size);
+}
+
+.footer-description {
+    text-align: right;
+}
+
+
+@media (max-width: 700px) {
+    .app-layout {
+        grid-template-columns: minmax(0, 1fr);
+
+        grid-template-rows: 68px auto minmax(0, 1fr) auto;
+
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "content"
+            "footer";
+    }
+
+    .header {
+        height: 68px;
+        padding: 0 17px;
+    }
+
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .logo-title {
+        font-size: var(--small-size);
+    }
+
+    .header-actions {
+        gap: 10px;
+    }
+
+    .header-divider {
+        display: none;
+    }
+
+    .profile-info {
+        display: none;
+    }
+
+    .profile-avatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .sidebar {
+        padding: 12px 15px;
+    }
+
+    .sidebar-section {
+        gap: 8px;
+    }
+
+    .sidebar-label {
+        display: none;
+    }
+
+    .sidebar-navigation {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 7px;
+    }
+
+    .sidebar-link {
+        min-height: 40px;
+        padding: 0 12px;
+        white-space: nowrap;
+        font-size: var(--small-size);
+    }
+
+    .footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
+
+        padding: 15px;
+        text-align: center;
+    }
+
+    .footer-description {
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .header {
+        padding: 0 12px;
+    }
+
+    .logo-title {
+        font-size: var(--small-size);
+    }
+}

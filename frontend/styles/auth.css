@@ -1,0 +1,136 @@
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 18px;
+    background: var(--background);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 35px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+}
+
+.auth-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 11px;
+    margin-bottom: 32px;
+    font-size: var(--subtitle-size);
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: var(--text-primary);
+}
+
+.auth-heading {
+    margin-bottom: 27px;
+    text-align: center;
+}
+
+.auth-heading h1 {
+    margin: 0 0 10px;
+    color: var(--text-primary);
+    font-size: var(--title-size);
+    font-weight: 700;
+}
+
+.auth-heading p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--small-size);
+    line-height: 1.7;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text-primary);
+    font-size: var(--small-size);
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    height: 44px;
+    padding: 0 13px;
+    color: var(--text-primary);
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    outline: none;
+    font-size: var(--small-size);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #a3afbf;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.auth-submit {
+    height: 45px;
+    margin-top: 5px;
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: 7px;
+    font-size: var(--small-size);
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.auth-submit:hover {
+    background: var(--primary-hover);
+}
+
+.auth-error {
+    padding: 11px 13px;
+    color: #b91c1c;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 7px;
+    font-size: var(--small-size);
+    line-height: 1.5;
+}
+
+.auth-switch {
+    margin-top: 23px;
+    color: var(--text-secondary);
+    font-size: var(--small-size);
+    text-align: center;
+}
+
+.auth-switch a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.header-icon-button img {
+    width: 31px;
+    height: 31px;
+}
