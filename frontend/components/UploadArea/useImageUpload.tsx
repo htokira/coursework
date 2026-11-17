@@ -126,6 +126,9 @@ export function useImageUpload() {
 
             savePendingImage(pendingImage);
 
+            setImage(null);
+            setError("");
+
             router.push("/analysis");
         } catch {
             setError(

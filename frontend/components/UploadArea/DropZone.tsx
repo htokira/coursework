@@ -1,8 +1,6 @@
 "use client";
 
 import { RefObject } from "react";
-import Image from 'next/image';
-import uploadIcon from '@/public/upload.png'
 
 interface DropZoneProps {
     inputRef: RefObject<HTMLInputElement | null>;
@@ -51,10 +49,19 @@ export function DropZone({
             />
 
             <div className="upload-icon">
-                <Image
-                    src={uploadIcon}
-                    alt="Upload icon"
-                    placeholder="blur"/>
+                <svg
+                    width="42"
+                    height="42"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round">
+                    <path d="M12 16V4" />
+                    <path d="m7 9 5-5 5 5" />
+                    <path d="M20 16.5v2A1.5 1.5 0 0 1 18.5 20h-13A1.5 1.5 0 0 1 4 18.5v-2" />
+                </svg>
             </div>
 
             <h2>

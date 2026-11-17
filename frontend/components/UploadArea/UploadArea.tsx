@@ -3,8 +3,6 @@
 import { useImageUpload } from "./useImageUpload";
 import { DropZone } from "./DropZone";
 import { ImagePreview } from "./ImagePreview";
-import Image from 'next/image';
-import noteIcon from '@/public/note.png'
 
 export default function UploadArea() {
     const {
@@ -66,10 +64,19 @@ export default function UploadArea() {
             {!image && (
                 <div className="upload-note">
                     <div className="upload-note-icon">
-                        <Image
-                            src={noteIcon}
-                            alt="Note icon"
-                            placeholder="blur"/>
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 11v5" />
+                            <path d="M12 8h.01" />
+                        </svg>
                     </div>
                     <p>
                         Після завантаження зображення можна буде переглянути його характеристики та розпочати процес аналізу.
