@@ -1,9 +1,6 @@
 "use client";
 
 import Link from "next/link"
-import Image from 'next/image'
-import userDefault from '../public/user.png'
-import leaveIcon from '../public/leave.png'
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -18,7 +15,17 @@ export default function Header() {
 
     const [user, setUser] = useState<AuthUser | null>(null);
     useEffect(() => {
-        setUser(getCurrentUser());
+        const updateUser = () => {
+            setUser(getCurrentUser());
+        };
+
+        updateUser();
+
+        window.addEventListener("auth-changed", updateUser);
+
+        return () => {
+            window.removeEventListener("auth-changed", updateUser);
+        };
     }, []);
 
     const handleLogout = () => {
@@ -57,20 +64,37 @@ export default function Header() {
                             onClick={handleLogout}
                             aria-label="Вийти з облікового запису"
                             title="Вийти">
-                            <Image
-                                src={leaveIcon}
-                                alt="Picture of the user profile"
-                                placeholder="blur"/>
+                            <svg
+                                width="21"
+                                height="21"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
+                                <path d="M10 17l5-5-5-5" />
+                                <path d="M15 12H3" />
+                                <path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6" />
+                            </svg>
                         </button>
                     </>
 
                 ) : (
                     <Link href="/login" className="header-profile">
                         <div className="profile-avatar">
-                            <Image
-                                src={userDefault}
-                                alt="Picture of the user profile"
-                                placeholder="blur"/>
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M5 21a7 7 0 0 1 14 0" />
+                            </svg>
                         </div>
 
                         <div className="profile-info">

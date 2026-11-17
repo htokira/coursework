@@ -2,19 +2,15 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from 'next/image';
-import homeIcon from '../public/home.png'
-import historyIcon from '../public/history.png'
 
 const navigationItems = [
     {
         title: "Головна",
         href: "/",
         icon: (
-            <Image
-                src={homeIcon}
-                alt="Picture of home outline"
-                placeholder="blur"/>
+            <svg viewBox="0 0 24 24">
+                <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H8v7H4a1 1 0 0 1-1-1z" />
+            </svg>
         ),
         active: true,
     },
@@ -22,10 +18,11 @@ const navigationItems = [
         title: "Історія аналізів",
         href: "/history",
         icon: (
-            <Image
-                src={historyIcon}
-                alt="Picture of home outline"
-                placeholder="blur"/>
+            <svg viewBox="0 0 24 24">
+                <path d="M3 12a9 9 0 1 0 2.64-6.36L3 8" />
+                <path d="M3 3v5h5" />
+                <path d="M12 7v5l3 2" />
+            </svg>
         ),
     },
 ];
@@ -37,23 +34,28 @@ export default function Sidebar() {
     return (
         <aside className="sidebar">
             <div className="sidebar-section">
-                <span className="sidebar-label">РОБОЧИЙ ПРОСТІР</span>
+                <span className="sidebar-label">НАВІГАЦІЯ</span>
 
                 <nav className="sidebar-navigation">
-                    {navigationItems.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className={`sidebar-link ${
-                                item.active ? "active" : ""
-                            }`}>
-                            <span className="sidebar-link-icon">
-                                {item.icon}
-                            </span>
+                    {navigationItems.map((item) => {
+                        const isActive = pathname === item.href;
 
-                            <span>{item.title}</span>
-                        </Link>
-                    ))}
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`sidebar-link ${
+                                    isActive ? "active" : ""
+                                }`}
+                            >
+                                <span className="sidebar-link-icon">
+                                    {item.icon}
+                                </span>
+
+                                <span>{item.title}</span>
+                            </Link>
+                        );
+                    })}
                 </nav>
             </div>
         </aside>
